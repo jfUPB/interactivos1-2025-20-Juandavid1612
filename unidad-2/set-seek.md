@@ -88,27 +88,29 @@ while True:
 
 #### Estados:
 
-STATE_INIT: Estado inicial (pseudoestado).
+- STATE_INIT: Estado inicial (pseudoestado).
 
-STATE_HAPPY: Se muestra cara feliz.
+- STATE_HAPPY: Se muestra cara feliz.
 
-STATE_SMILE: Se muestra sonrisa.
+- STATE_SMILE: Se muestra sonrisa.
 
-STATE_SAD: Se muestra cara triste.
+- STATE_SAD: Se muestra cara triste.
 
 #### Eventos: 
 
-Temporizador vence (time-out): Cuando se supera el intervalo del estado actual.
+- Temporizador vence (time-out): Cuando se supera el intervalo del estado actual.
 
-Presión del botón A: Se detecta con button_a.was_pressed().
+- Presión del botón A: Se detecta con button_a.was_pressed().
 
-#### Acciones 
-display.show(...): Muestra una imagen (feliz, sonrisa o triste).
+#### Acciones: 
 
-start_time = utime.ticks_ms(): Se reinicia el temporizador.
+- display.show(...): Muestra una imagen (feliz, sonrisa o triste).
 
-interval = ...: Se actualiza el tiempo a esperar para el siguiente cambio de estado.
+- start_time = utime.ticks_ms(): Se reinicia el temporizador.
+
+- interval = ...: Se actualiza el tiempo a esperar para el siguiente cambio de estado.
 
 
 ### 3
+
 
