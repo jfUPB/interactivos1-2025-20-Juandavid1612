@@ -80,4 +80,35 @@ while True:
 ```
 
 
+## Act 3 
+
+### 1
+
+### 2 
+
+#### Estados:
+
+STATE_INIT: Estado inicial (pseudoestado).
+
+STATE_HAPPY: Se muestra cara feliz.
+
+STATE_SMILE: Se muestra sonrisa.
+
+STATE_SAD: Se muestra cara triste.
+
+#### Eventos: 
+
+Temporizador vence (time-out): Cuando se supera el intervalo del estado actual.
+
+Presión del botón A: Se detecta con button_a.was_pressed().
+
+#### Acciones 
+display.show(...): Muestra una imagen (feliz, sonrisa o triste).
+
+start_time = utime.ticks_ms(): Se reinicia el temporizador.
+
+interval = ...: Se actualiza el tiempo a esperar para el siguiente cambio de estado.
+
+
+### 3
 
