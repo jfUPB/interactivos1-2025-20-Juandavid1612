@@ -84,6 +84,8 @@ while True:
 
 ### 1
 
+El programa permite simular concurrencia usando una máquina de estados y temporizadores. por lo que puede manejar botones y tiempos pasando de un estado a otroll sin bloquearse, realizando varias tareas de forma eficiente dentro de un único bucle continuo.
+
 ### 2 
 
 #### Estados:
@@ -113,4 +115,43 @@ while True:
 
 ### 3
 
+#### Vector de prueba 1:
+Condición inicial: El sistema comienza en STATE_INIT.
+
+Evento: Inicio del programa (no hay botón presionado).
+
+Resultado esperado:
+
+Muestra cara feliz (Image.HAPPY),
+
+Cambia a STATE_HAPPY
+
+Inicia temporizador con intervalo 1500 ms.
+
+#### Vector de prueba 2:
+Condición inicial: El sistema está en STATE_HAPPY.
+
+Evento: El botón A es presionado antes de que pasen los 1500 ms.
+
+Resultado esperado:
+
+Se muestra cara triste (Image.SAD),
+
+Cambia a STATE_SAD,
+
+Intervalo cambia a 2000 ms.
+
+
+#### Vector de prueba 3:
+Condición inicial: El sistema está en STATE_SMILE.
+
+Evento: No se presiona el botón, y pasa más de 1000 ms.
+
+Resultado esperado:
+
+Cambia a STATE_SAD,
+
+Se muestra cara triste,
+
+Intervalo cambia a 2000 ms.
 
