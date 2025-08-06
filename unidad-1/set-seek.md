@@ -103,6 +103,153 @@ class OscillatingBall {
 
 https://github.com/user-attachments/assets/db06497d-0a3a-40ac-9929-db1baf866a4b
 
+## Act 5 
+
+### micro;bit
+
+En un bucle infinito (while True):
+
+Si el botón A del micro:bit está presionado, envía la letra 'A' por el puerto UART.
+
+Si no está presionado, envía 'N'.
+
+Espera 100 milisegundos antes de volver a verificar.
+
+
+
+### p5.js
+
+Dibuja un lienzo de 400x400 píxeles.
+
+Crea un botón para conectarse al micro:bit.
+
+Cuando recibe un dato por serial:
+
+Si es "A", pinta un cuadro rojo.
+
+Si es "N", pinta un cuadro verde.
+
+El botón cambia entre “Connect” y “Disconnect” dependiendo del estado de la conexión.
+
+
+## Act 6
+
+### Python
+```
+from microbit import *
+
+import utime
+uart.init(baudrate=115200)
+
+while True:
+    if button_a.is_pressed():
+        uart.write('L')
+    elif button_b.is_pressed():
+        uart.write('R')
+    else:
+        uart.write('N')
+
+    sleep(100)
+
+```
+### javascript
+```
+let port;
+let connectBtn;
+let connectionInitialized = false;
+
+let circleX;
+
+function setup() {
+  createCanvas(400, 400);
+  circleX = width / 2;
+
+  port = createSerial();
+  connectBtn = createButton("Connect to micro:bit");
+  connectBtn.position(20, 20);
+  connectBtn.mousePressed(connectBtnClick);
+}
+
+function draw() {
+  background(220);
+
+  if (port.opened() && !connectionInitialized) {
+    port.clear();
+    connectionInitialized = true;
+  }
+
+  if (port.availableBytes() > 0) {
+    let data = port.read(1);
+    if (data === "L") {
+      circleX -= 5; // Mover a la izquierda
+    } else if (data === "R") {
+      circleX += 5; // Mover a la derecha
+    }
+  }
+
+  circleX = constrain(circleX, 0, width);
+
+  // círculo
+  fill("blue");
+  circle(circleX, height / 2, 50);
+
+  // Cambiar texto 
+  if (!port.opened()) {
+    connectBtn.html("Connect to micro:bit");
+  } else {
+    connectBtn.html("Disconnect");
+  }
+}
+
+function connectBtnClick() {
+  if (!port.opened()) {
+    port.open("MicroPython", 115200);
+    connectionInitialized = false;
+  } else {
+    port.close();
+  }
+}
+
+```
+## Autoevaluación
+
+### parte 1 
+
+1. Siempre recibe información del entorno a traves de sensores/controladores ( INPUT), El sistema analiza o interpreta los datos de entrada ( PROCESO ), El sistema responde de manera perceptible sea de forma digital ( por pantalla ) o física ( OUTPUT) 
+
+2. El input fueron la presión de los botones A y B del microbit, el proceso es enviar un caracter dependiendo de qué boton se presione y el p5.js decide si moverlo a izquierda o derecha, el Output es el movimiento del circulo en pantalla a la direccion corerspondiente
+
+3. uart.write("A") envía el mensaje por serial, el port.read(1) "escucha" el mensaje
+
+4. El arte tradicional es creado manualmente por el artista mientras que el arte generativo usa algoritmoso reglas para generar obras de forma semi automatica
+
+5. Programar el micro:bit para que detecte cuando se sacude usando su acelerómetro, cuando se detecte la sacudida, enviar un mensaje (como una letra) a través del puerto serial hacia la computadora. Programar el sistema para que escuche los datos que llegan por el puerto serial y cuando reciba el mensaje de “sacudida”, cambiar el color del círculo en pantalla a un color aleatorio.
+
+### parte 2
+
+1. La parte tecnica, porque hace mucho no me tomaba el tiempo de entender un código y honestamente estoy ya un poco saturado de la programación en general
+
+2. No sabía como hacer el ejercicio 4, fue cuando revisé la pagina de p5.js que entendí mejor el lenguaje de programación y pude sacarlo adelante
+
+3. Este curso puede servir para llevar más a fondo el entedimiento de lo que programemos, hacer piezas creativas a base del mismo, etc
+
+4. Me gustó ese aprendizaje guiado
+
+## Coevaluación
+
+El código de mi compañero Alejandro Gonzales estaba claro, lo comentó bien y de forma clara, vi un buen uso de las funciones para ejecutar su idea en p5.js
+
+## Feedback
+
+1. El video de esa chica que hacía cuadros con codigo me ayudó mucho a entenderlo
+
+2. La vdd no tengo un comentario en esta parte
+
+3. No, no me gustaría explorar más al respecto
+
+4. Pues, entre frustrante e interesante, frustrante por no entender cómo hacer cosas de ese estilo e interesado por los resultados
+
+5. No.
 
 
 
