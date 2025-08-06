@@ -235,7 +235,7 @@ while True:
 
 ### Vectores de prueba
 
-**Vector de prueba 1:** Aumentar el tiempo en modo configuración
+**Vector de prueba 1**: Aumentar el tiempo en modo configuración
 Con la bomba en el estado CONFIG, se presiona el botón A una vez. Se espera que el valor del tiempo aumente en 1 segundo, siempre que no haya alcanzado el límite superior de 60 segundos. El estado del sistema debe permanecer en CONFIG y el nuevo tiempo debe mostrarse en el display.
 
 
@@ -250,5 +250,6 @@ Con la bomba armada (estado ARMED) y la cuenta regresiva activa, se espera el pa
 
 **Vector de prueba 5:** Reinicio tras explosión mediante el botón touch
 Una vez que la bomba ha explotado y se encuentra en el estado EXPLODED, se toca el botón táctil (logo). El sistema debe reiniciarse: vuelve al estado CONFIG, se limpia el display, y el tiempo configurado se restablece automáticamente al valor inicial de 20 segundos.
+
 
 
