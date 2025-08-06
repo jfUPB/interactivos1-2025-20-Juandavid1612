@@ -235,21 +235,22 @@ while True:
 
 ### Vectores de prueba
 
-**Vector de prueba 1**: Aumentar el tiempo en modo configuración
+#### **Vector de prueba 1**: Aumentar el tiempo en modo configuración
 Con la bomba en el estado CONFIG, se presiona el botón A una vez. Se espera que el valor del tiempo aumente en 1 segundo, siempre que no haya alcanzado el límite superior de 60 segundos. El estado del sistema debe permanecer en CONFIG y el nuevo tiempo debe mostrarse en el display.
 
 
-**Vector de prueba 2:** Disminuir el tiempo en modo configuración
+#### **Vector de prueba 2:** Disminuir el tiempo en modo configuración
 En el estado CONFIG, se presiona el botón B una vez. El sistema debe reducir el tiempo configurado en 1 segundo, salvo que ya se encuentre en el límite inferior de 10 segundos. El estado debe seguir siendo CONFIG y el display debe actualizarse con el nuevo valor.
 
-**Vector de prueba 3:** Armar la bomba mediante el gesto de shake
+#### **Vector de prueba 3:** Armar la bomba mediante el gesto de shake
 Con el sistema en CONFIG y un tiempo válido ya configurado (por ejemplo, 25 segundos), se realiza el gesto de “shake”. Esto debe provocar la transición al estado ARMED, iniciando la cuenta regresiva desde el valor configurado. El display comenzará a mostrar el tiempo restante, reduciéndolo cada segundo.
 
 **Vector de prueba 4:** La bomba explota cuando el contador llega a cero
 Con la bomba armada (estado ARMED) y la cuenta regresiva activa, se espera el paso del tiempo hasta que llegue a 0 segundos. En ese momento, el sistema debe cambiar al estado EXPLODED. Se debe mostrar un símbolo de explosión en el display (como una calavera) y sonar un efecto con el speaker.
 
-**Vector de prueba 5:** Reinicio tras explosión mediante el botón touch
+#### **Vector de prueba 5:** Reinicio tras explosión mediante el botón touch
 Una vez que la bomba ha explotado y se encuentra en el estado EXPLODED, se toca el botón táctil (logo). El sistema debe reiniciarse: vuelve al estado CONFIG, se limpia el display, y el tiempo configurado se restablece automáticamente al valor inicial de 20 segundos.
+
 
 
 
