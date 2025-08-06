@@ -5,6 +5,7 @@
 
 ## Act 4
 
+<img width="911" height="525" alt="image" src="https://github.com/user-attachments/assets/70dbbbe3-ba94-4f69-878d-c06912eae9da" />
 
 
 ## Act 5
@@ -97,3 +98,4 @@ Con la bomba armada (estado ARMED) y la cuenta regresiva activa, se espera el pa
 
 #### **Vector de prueba 5:** Reinicio tras explosión mediante el botón touch
 Una vez que la bomba ha explotado y se encuentra en el estado EXPLODED, se toca el botón táctil (logo). El sistema debe reiniciarse: vuelve al estado CONFIG, se limpia el display, y el tiempo configurado se restablece automáticamente al valor inicial de 20 segundos.
+
