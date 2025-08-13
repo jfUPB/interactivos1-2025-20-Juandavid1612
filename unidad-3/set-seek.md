@@ -13,15 +13,15 @@ import utime
 
 class Event:
     def __init__(self):
-        self.current_event = "NONE"  # Ningún evento al inicio
+        self.current_event = "NONE"  # Sin vento al inicio 
 
     def set_event(self, ev):
-        if self.current_event == "NONE":  # Solo si no hay evento pendiente
+        if self.current_event == "NONE": 
             self.current_event = ev
 
     def get_event(self):
         ev = self.current_event
-        self.current_event = "NONE"  # Consumir evento
+        self.current_event = "NONE" 
         return ev
 
 
@@ -121,4 +121,5 @@ while True:
 
 ```
 ### 2 
+
 
