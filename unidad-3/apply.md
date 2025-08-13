@@ -7,8 +7,10 @@
 ## Act 6
 
 ```
-let serial;
-let portName = 'COM3';
+
+let port;
+let writer;
+let reader;
 
 const CONFIG = "CONFIG";
 const ARMED = "ARMED";
@@ -20,18 +22,17 @@ let startTime = 0;
 let password = ['A', 'B', 'A'];
 let key = [];
 let keyIndex = 0;
+let serialBuffer = "";
 
 function setup() {
   createCanvas(400, 300);
   textAlign(CENTER, CENTER);
   textSize(24);
-
-  serial = new p5.SerialPort();
-  serial.list();
-  serial.open(portName);
-  serial.on('data', serialEvent);
-
   startTime = millis();
+
+  let connectBtn = createButton("Conectar Serial");
+  connectBtn.position(10, 10);
+  connectBtn.mousePressed(connectSerial);
 }
 
 function draw() {
@@ -56,13 +57,14 @@ function draw() {
     text("💀 BOOM 💀", width / 2, height / 2);
     text("Reiniciar: 'R'", width / 2, 200);
   }
+
+  if (reader) {
+    readSerial();
+  }
 }
 
-function serialEvent() {
-  let data = serial.readLine().trim().toUpperCase();
-  if (data.length > 0) {
-    handleEvent(data);
-  }
+function keyPressed() {
+  handleEvent(key.toUpperCase());
 }
 
 function handleEvent(ev) {
@@ -101,10 +103,6 @@ function handleEvent(ev) {
   }
 }
 
-function keyPressed() {
-  handleEvent(key.toUpperCase());
-}
-
 function arraysEqual(a, b) {
   if (a.length !== b.length) return false;
   for (let i = 0; i < a.length; i++) {
@@ -113,4 +111,43 @@ function arraysEqual(a, b) {
   return true;
 }
 
+async function connectSerial() {
+  try {
+    port = await navigator.serial.requestPort();
+    await port.open({ baudRate: 115200 });
+    writer = port.writable.getWriter();
+    reader = port.readable.getReader();
+    console.log("Conectado al puerto serial");
+  } catch (err) {
+    console.error("Error al conectar:", err);
+  }
+}
+
+async function readSerial() {
+  try {
+    const { value, done } = await reader.read();
+    if (done) {
+      console.log("Puerto cerrado");
+      reader.releaseLock();
+      return;
+    }
+    if (value) {
+      let str = new TextDecoder().decode(value);
+      serialBuffer += str;
+      if (serialBuffer.includes("\n")) {
+        let lines = serialBuffer.split("\n");
+        for (let i = 0; i < lines.length - 1; i++) {
+          let cmd = lines[i].trim().toUpperCase();
+          if (cmd) handleEvent(cmd);
+        }
+        serialBuffer = lines[lines.length - 1];
+      }
+    }
+  } catch (err) {
+    console.error("Error leyendo serial:", err);
+  }
+}
+
+
 ```
+
