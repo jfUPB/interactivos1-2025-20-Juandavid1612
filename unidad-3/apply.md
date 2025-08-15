@@ -151,3 +151,4 @@ async function readSerial() {
 
 ```
 
+## Act 7
