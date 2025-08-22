@@ -313,3 +313,6 @@ async function readSerial() {
     console.error("Error leyendo serial:", err);
   }
 }
+
+```
+
