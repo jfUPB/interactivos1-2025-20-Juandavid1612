@@ -316,5 +316,3 @@ async function readSerial() {
 
 ```
 
-
-
