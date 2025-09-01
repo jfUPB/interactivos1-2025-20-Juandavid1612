@@ -60,7 +60,7 @@ function keyPressed() {
 
 ```
 
-[Enlace a la aplicación modificada](https://editor.p5js.org/Juandavid1612/sketches/B1ec55pyE)
+[Enlace a la aplicación modificada](<iframe src="https://editor.p5js.org/Juandavid1612/full/B1ec55pyE"></iframe>)
 
 Código modificado:
 
@@ -115,6 +115,7 @@ async function readLoop() {
 ## Video
 
 [Video demostratativo](URL)
+
 
 
 
