@@ -76,6 +76,8 @@ let aState = 0;
 let bState = 0;
 let connectBtn;
 
+let angle = 0; // rotación del rectángulo
+
 function setup() {
   createCanvas(720, 720);
   noCursor();
@@ -84,7 +86,6 @@ function setup() {
   rectMode(CENTER);
   noStroke();
 
-  // Botón para conectar el micro:bit
   connectBtn = createButton("Conectar Micro:bit");
   connectBtn.position(20, 20);
   connectBtn.mousePressed(connect);
@@ -92,29 +93,32 @@ function setup() {
 
 function draw() {
   background(map(yValue, -1024, 1024, 0, 180), 100, 100);
-
   fill(360 - map(yValue, -1024, 1024, 0, 180), 100, 100);
-  rect(360, 360, map(xValue, -1024, 1024, 10, width), map(xValue, -1024, 1024, 10, width));
 
-  // Botón A guarda la imagen
-  if (aState === 1) {
-    saveCanvas('microbit_rect', 'png');
-  }
+  // Rotación con A (derecha) y B (izquierda)
+  if (aState === 1) angle += 2;
+  if (bState === 1) angle -= 2;
 
-  // Botón B limpia el fondo en blanco
-  if (bState === 1) {
-    background(0, 0, 100);
-  }
+  push();
+  translate(width / 2, height / 2);
+  rotate(radians(angle));
+  const s = map(xValue, -1024, 1024, 10, width);
+  rect(0, 0, s, s);
+  pop();
+
+  // (Opcional) HUD para depurar
+  noStroke();
+  fill(0, 0, 20);
+  rect(10, height - 40, 260, 30);
+  fill(0);
+  text(`x:${xValue}  y:${yValue}  A:${aState}  B:${bState}`, 20, height - 20);
 }
 
-// =========================
-// 🔗 Conexión con micro:bit
-// =========================
+// ===== Conexión Web Serial =====
 async function connect() {
   try {
     port = await navigator.serial.requestPort();
     await port.open({ baudRate: 115200 });
-
     reader = port.readable.getReader();
     readLoop();
   } catch (err) {
@@ -124,26 +128,41 @@ async function connect() {
 
 async function readLoop() {
   let buffer = "";
+  const decoder = new TextDecoder();
+
   while (true) {
     const { value, done } = await reader.read();
     if (done) {
       reader.releaseLock();
       break;
     }
-    if (value) {
-      buffer += new TextDecoder().decode(value);
-      let lines = buffer.split("\n");
-      buffer = lines.pop();
+    if (!value) continue;
 
-      for (let line of lines) {
-        let parts = line.trim().split(",");
-        if (parts.length === 4) {
-          xValue = int(parts[0]);
-          yValue = int(parts[1]);
-          aState = int(parts[2]);
-          bState = int(parts[3]);
-        }
-      }
+    buffer += decoder.decode(value);
+    // Soporta \n y \r\n
+    let lines = buffer.split(/\r?\n/);
+    buffer = lines.pop(); // última línea (posible incompleta)
+
+    for (let line of lines) {
+      line = line.trim();
+      if (!line) continue;
+      const parts = line.split(",");
+      if (parts.length !== 4) continue;
+
+      // Parseo robusto
+      const xi = parseInt(parts[0], 10);
+      const yi = parseInt(parts[1], 10);
+      if (!Number.isNaN(xi)) xValue = xi;
+      if (!Number.isNaN(yi)) yValue = yi;
+
+      // Acepta "1"/"0" o "True"/"False" (cualquier may/min)
+      const to01 = (v) => {
+        const t = String(v).trim().toLowerCase();
+        if (t === '1' || t === 'true') return 1;
+        return 0;
+      };
+      aState = to01(parts[2]);
+      bState = to01(parts[3]);
     }
   }
 }
@@ -154,6 +173,7 @@ async function readLoop() {
 ## Video
 
 [Video demostratativo](URL)
+
 
 
 
