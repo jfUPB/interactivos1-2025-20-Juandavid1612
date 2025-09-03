@@ -66,16 +66,55 @@ Código modificado:
 
 ``` 
 
-  // Botón A guarda imagen
-  if (aState == 1) {
+  'use strict';
+
+let port;
+let reader;
+let xValue = 0;
+let yValue = 0;
+let aState = 0;
+let bState = 0;
+let connectBtn;
+
+function setup() {
+  createCanvas(720, 720);
+  noCursor();
+
+  colorMode(HSB, 360, 100, 100);
+  rectMode(CENTER);
+  noStroke();
+
+  // Botón para conectar el micro:bit
+  connectBtn = createButton("Conectar Micro:bit");
+  connectBtn.position(20, 20);
+  connectBtn.mousePressed(connect);
+}
+
+function draw() {
+  background(map(yValue, -1024, 1024, 0, 180), 100, 100);
+
+  fill(360 - map(yValue, -1024, 1024, 0, 180), 100, 100);
+  rect(360, 360, map(xValue, -1024, 1024, 10, width), map(xValue, -1024, 1024, 10, width));
+
+  // Botón A guarda la imagen
+  if (aState === 1) {
     saveCanvas('microbit_rect', 'png');
+  }
+
+  // Botón B limpia el fondo en blanco
+  if (bState === 1) {
+    background(0, 0, 100);
   }
 }
 
+// =========================
+// 🔗 Conexión con micro:bit
+// =========================
 async function connect() {
   try {
     port = await navigator.serial.requestPort();
     await port.open({ baudRate: 115200 });
+
     reader = port.readable.getReader();
     readLoop();
   } catch (err) {
@@ -115,6 +154,7 @@ async function readLoop() {
 ## Video
 
 [Video demostratativo](URL)
+
 
 
 
