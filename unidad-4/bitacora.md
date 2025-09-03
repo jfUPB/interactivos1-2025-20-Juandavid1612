@@ -172,7 +172,8 @@ async function readLoop() {
 
 ## Video
 
-[Video demostratativo](URL)
+[Video demostratativo](https://youtu.be/nie_bIS7t1U)
+
 
 
 
