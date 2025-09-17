@@ -2,6 +2,8 @@
 
 ## Código
 
+### SE HA CAMBIADO LA OBRA DE ARTE GENERATIVO
+
 [Enlace a la aplicación a modificar](https://editor.p5js.org/generative-design/sketches/P_2_3_3_01)
 
 Código a modificar:
@@ -322,6 +324,7 @@ function keyPressed() {
 ## Video
 
 [Video demostratativo](https://youtu.be/EuDLmnAlSAE)
+
 
 
 
