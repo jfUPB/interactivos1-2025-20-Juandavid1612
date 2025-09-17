@@ -17,8 +17,7 @@ Describe cómo se están comunicando el micro:bit y el sketch de p5.js. ¿Qué d
   
 Muestra y explica la parte del código de p5.js donde lee los datos del micro:bit y los transforma en coordenadas de la pantalla.
 
-
-´´´
+```
 if (port.availableBytes() > 0) {
   let data = port.readUntil("\n");
   if (data) {
@@ -35,12 +34,13 @@ if (port.availableBytes() > 0) {
     }
   }
 }
-´´´
+
+```
 Se lee una línea hasta \n y se separa por comas con .split(","). Luego, los valores se convierten a sus respectivos tipos: xValue y yValue se transforman en coordenadas (microBitX, microBitY) centradas en la pantalla, y aState y bState se convierten en valores booleanos. Finalmente, se llama a updateButtonStates() para detectar eventos de los botones.
 
 ¿Cómo se generan los eventos A pressed y B released que se generan en p5.js a partir de los datos que envía el micro:bit?
 
-´´´
+```
 function updateButtonStates(newAState, newBState) {
  if (newAState === true && prevmicroBitAState === false) {
    // Botón A acaba de ser presionado
@@ -59,5 +59,6 @@ function updateButtonStates(newAState, newBState) {
  prevmicroBitAState = newAState;
  prevmicroBitBState = newBState;
 }
-´´´
+```
+
 
