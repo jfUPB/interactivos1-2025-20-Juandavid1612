@@ -605,12 +605,7 @@ Probé el envío en texto con comas y en binario con header y checksum. Con el t
 <img width="543" height="89" alt="image" src="https://github.com/user-attachments/assets/501f2ce5-0fe8-4576-93df-c0975f2d8674" />
 
 
-Al ejecutar la aplicación revisé la consola de p5.js: cuando todo funcionaba veía los valores de microBitX, microBitY y los botones A y B, pero al mover rápido el micro:bit o reconectarlo aparecía “Checksum error in packet”. Eso confirmó que el programa descartaba datos corruptos y solo usaba información válida.
 
-<img width="458" height="105" alt="image" src="https://github.com/user-attachments/assets/4d5a5dfb-820d-4fcf-91bd-542fd7c4c293" />
-
-
-Noté que los valores leídos aparecen como decimales en lugar de enteros. Esto ocurre porque al recibir los datos de x e y el código hace una división por 2, lo que convierte automáticamente los números en tipo float..<img width="429" height="54" alt="image" src="https://github.com/user-attachments/assets/71148875-a3f9-4eed-a5a4-627c4ce88de7" />
 
 
 ## AUTOEVALUACIÓN ##
@@ -622,6 +617,7 @@ Noté que los valores leídos aparecen como decimales en lugar de enteros. Esto 
 | 3. Análisis y Reflexión | 3.5   | La bitácora conecta claramente la evidencia  con la explicación.|
 | 4. Apropiación y Articulación de Conceptos | 3.5  |   Se plasmó en la bitácora el trabajo realizado tanto en clase como de manera asíncrónica para la entrega, no llegué a comprender todo honestamente por las inasistencias a clases  |
 | TOTAL| 3.7|  Se pudo haber hecho mejor   |
+
 
 
 
