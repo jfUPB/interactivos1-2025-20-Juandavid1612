@@ -62,3 +62,32 @@ function updateButtonStates(newAState, newBState) {
 ```
 
 
+- Se lee una línea hasta \n y se separa por comas con .split(","). Luego, los valores se convierten a sus respectivos tipos: xValue y yValue se transforman en coordenadas (microBitX, microBitY) centradas en la pantalla, y aState y bState se convierten en valores booleanos. Finalmente, se llama a updateButtonStates() para detectar eventos de los botones.
+
+¿Cómo se generan los eventos A pressed y B released que se generan en p5.js a partir de los datos que envía el micro:bit?
+
+```
+function updateButtonStates(newAState, newBState) {
+ if (newAState === true && prevmicroBitAState === false) {
+   // Botón A acaba de ser presionado
+   lineModuleSize = random(50, 160);
+   clickPosX = microBitX;
+   clickPosY = microBitY;
+   print("A pressed");
+ }
+
+ if (newBState === false && prevmicroBitBState === true) {
+   // Botón B acaba de ser soltado
+   c = color(random(255), random(255), random(255), random(80, 100));
+   print("B released");
+ }
+
+ prevmicroBitAState = newAState;
+ prevmicroBitBState = newBState;
+}
+```
+A pressed: Detecta cuando aState pasa de false a true.
+
+B released: Detecta cuando bState pasa de true a false.
+
+Capturas de pantalla de los algunos dibujos que hayas hecho con el sketch.
