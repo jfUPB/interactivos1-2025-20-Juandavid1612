@@ -611,5 +611,12 @@ Algo que noté en el codigo es que los valores que se leen son decimales cuando 
 
 <img width="429" height="54" alt="image" src="https://github.com/user-attachments/assets/4900107b-7a7b-4aee-a835-91468a3d3aff" />
 
+## AUTOEVALUACIÓN ##
 
-
+| CRITERIOS | NOTA | JUSTIFICACIÓN|
+|----------|----------|----------|
+| 1. Profundidad de la Indagación  | 4   |Fui indagando según me surgieran dudas, apoyandome de mis compañeros que sí han asistido estas ultimas clases|
+| 2. Calidad de la Experimentación | 4   | Comprobé que el código estuviera funcionando   |
+| 3. Análisis y Reflexión | 3.5   | La bitácora conecta claramente la evidencia  con la explicación.|
+| 4. Apropiación y Articulación de Conceptos | 3.5  |   Se plasmó en la bitácora el trabajo realizado tanto en clase como de manera asíncrónica para la entrega, no llegué a comprender todo honestamente por las inasistencias a clases  |
+| TOTAL| 3.7|  Se pudo haber hecho mejor   |
