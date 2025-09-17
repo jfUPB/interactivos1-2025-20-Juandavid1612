@@ -179,12 +179,12 @@ view.getUint8(4): Lee 1 byte a partir del byte 4 como un entero sin signo de 8 b
 
 view.getUint8(5): Lee 1 byte a partir del byte 5 como un entero sin signo de 8 bits (bState). Se compara si es 1 para obtener el estado booleano.
 
-## ¿Qué ves en la consola? ¿Por qué crees que se produce este error?
+### ¿Qué ves en la consola? ¿Por qué crees que se produce este error?
 El problema es de la sincronización Cuando se ejecuta el código y se observa la consola, se notara que los datos a veces se desalinean. Por ejemplo, en el resultado que muestras, aparecen valores extraños como 92 o 222 al inicio de las líneas, o valores incorrectos como microBitY: 513 o microBitX: 3073.
 
 Este error se produce porque no hay un mecanismo de sincronización. El receptor asume que el primer byte que recibe es el inicio de un nuevo paquete. Sin embargo, si la comunicación se interrumpe o el programa de p5.js se inicia a mitad de una transmisión, el port.readBytes(6) podría leer los 6 bytes a partir del segundo, tercero, o cuarto byte del paquete real, lo que causaría que los datos se interpreten de forma incorrecta.
 
-## ¿Qué cambios tienen los programas y ¿Qué puedes observar en la consola del editor de p5.js?
+### ¿Qué cambios tienen los programas y ¿Qué puedes observar en la consola del editor de p5.js?
 
 El framing como solución Con la implementación del framing, el código de micro:bit y p5.js cambia para asegurar una comunicación robusta:
 
@@ -207,3 +207,4 @@ Una vez que encuentra el header, verifica que haya un paquete completo (8 bytes)
 Calcula el checksum de los datos recibidos y lo compara con el checksum enviado. Si no coinciden, descarta el paquete para evitar procesar datos corruptos.
 
 Al ejecutar el código final, verás en la consola de p5.js que los datos se imprimen de forma consistente y correcta: microBitX: 500 microBitY: 524 microBitAState: true microBitBState: false. Esto confirma que el framing y el checksum solucionaron los problemas de sincronización e integridad de los datos.
+
