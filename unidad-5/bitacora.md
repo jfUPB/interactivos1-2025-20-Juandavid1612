@@ -210,3 +210,4 @@ Al ejecutar el código final, verás en la consola de p5.js que los datos se imp
 
 
 
+# Actividad 04
