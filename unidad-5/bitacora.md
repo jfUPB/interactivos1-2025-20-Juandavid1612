@@ -156,13 +156,13 @@ Desventajas del ASCII:
 
 # Actividad 03
 
-## Explica por qué en la unidad anterior teníamos que enviar la información delimitada y además marcada con un salto de línea y ahora no es necesario.
+### Explica por qué en la unidad anterior teníamos que enviar la información delimitada y además marcada con un salto de línea y ahora no es necesario.
 
 En la unidad anterior, se usaba un protocolo de texto ASCII donde los datos (xValue, yValue, aState, bState) tenían una longitud variable. Para que el sketch pudiera saber cuándo terminaba un paquete y comenzaba el siguiente, se necesitaba un delimitador, que en este caso era el salto de línea (\n). Al recibir el \n, p5.js sabía que tenía un mensaje completo para procesar.
 
 En el nuevo protocolo binario, el tamaño del paquete es fijo y conocido de antemano (6 bytes en el primer ejemplo, 8 bytes con el framing). Por lo tanto, el receptor simplemente tiene que leer un número fijo de bytes para obtener un paquete completo, sin necesidad de un delimitador. Esto hace que la comunicación sea más simple y eficiente, ya que no se envían bytes extra.
 
-## Compara el código de la unidad anterior relacionado con la recepción de los datos seriales que ves ahora. ¿Qué cambios observas?
+### Compara el código de la unidad anterior relacionado con la recepción de los datos seriales que ves ahora. ¿Qué cambios observas?
 El código de p5.js ha cambiado significativamente en la forma en que lee los datos seriales:
 
 if (port.availableBytes() >= 6): En lugar de esperar un delimitador (\n), el código verifica si hay al menos 6 bytes disponibles en el puerto serial.
@@ -179,12 +179,12 @@ view.getUint8(4): Lee 1 byte a partir del byte 4 como un entero sin signo de 8 b
 
 view.getUint8(5): Lee 1 byte a partir del byte 5 como un entero sin signo de 8 bits (bState). Se compara si es 1 para obtener el estado booleano.
 
-#### ¿Qué ves en la consola? ¿Por qué crees que se produce este error?
+### ¿Qué ves en la consola? ¿Por qué crees que se produce este error?
 El problema es de la sincronización Cuando se ejecuta el código y se observa la consola, se notara que los datos a veces se desalinean. Por ejemplo, en el resultado que muestras, aparecen valores extraños como 92 o 222 al inicio de las líneas, o valores incorrectos como microBitY: 513 o microBitX: 3073.
 
 Este error se produce porque no hay un mecanismo de sincronización. El receptor asume que el primer byte que recibe es el inicio de un nuevo paquete. Sin embargo, si la comunicación se interrumpe o el programa de p5.js se inicia a mitad de una transmisión, el port.readBytes(6) podría leer los 6 bytes a partir del segundo, tercero, o cuarto byte del paquete real, lo que causaría que los datos se interpreten de forma incorrecta.
 
-#### ¿Qué cambios tienen los programas y ¿Qué puedes observar en la consola del editor de p5.js?
+### ¿Qué cambios tienen los programas y ¿Qué puedes observar en la consola del editor de p5.js?
 
 El framing como solución Con la implementación del framing, el código de micro:bit y p5.js cambia para asegurar una comunicación robusta:
 
@@ -207,5 +207,6 @@ Una vez que encuentra el header, verifica que haya un paquete completo (8 bytes)
 Calcula el checksum de los datos recibidos y lo compara con el checksum enviado. Si no coinciden, descarta el paquete para evitar procesar datos corruptos.
 
 Al ejecutar el código final, verás en la consola de p5.js que los datos se imprimen de forma consistente y correcta: microBitX: 500 microBitY: 524 microBitAState: true microBitBState: false. Esto confirma que el framing y el checksum solucionaron los problemas de sincronización e integridad de los datos.
+
 
 
