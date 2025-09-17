@@ -597,19 +597,9 @@ function keyPressed() {
 }
 
 ```
-Empecé el ejercicio siguiendo exactamente el instructivo de la Unidad 5 y siguiendo paso a paso lo que el profe iba mostrando en esta unidad.
+<img width="812" height="738" alt="image" src="https://github.com/user-attachments/assets/6c35abb3-7c6c-4e0f-8187-8809fd5b97a5" />
+<img width="772" height="657" alt="image" src="https://github.com/user-attachments/assets/84ae145d-6da1-4fa9-bd8b-e137bfeabbe0" />
 
-Probé tanto el envío en texto como en binario, con el texto tuve lecturas incompletas y errores, pero al usar paquetes binarios con header y checksum la transmisión quedó mucho más estable y sincronizada.
-
-<img width="543" height="89" alt="image" src="https://github.com/user-attachments/assets/0d3c8a61-4ca3-48f4-9bd8-026b96370b10" />
-
-Para probarlo, corri la aplicación y miré la consola de p5.js. Cuando los paquetes llegaban bien, veía valores de microBitX, microBitY y los estados de A y B. Pero cuando movía el micro:bit muy rápido o lo desconectaba y reconectaba, a veces aparecía el mensaje “Checksum error in packet”. Eso me sirvió como evidencia de que el programa realmente estaba descartando basura y no se usaban datos dañados en el dibujo.
-
-<img width="458" height="105" alt="image" src="https://github.com/user-attachments/assets/42de082b-ac41-4518-8032-005bb3cc4586" />
-
-Algo que noté en el codigo es que los valores que se leen son decimales cuando se supone que lo estamos convirtiendo a enteros. Lo que sucede es que en la parte en la que estamos recibiendo los datos de x y y se realiza una división por 2. Esto convierte los numeros a float.
-
-<img width="429" height="54" alt="image" src="https://github.com/user-attachments/assets/4900107b-7a7b-4aee-a835-91468a3d3aff" />
 
 ## AUTOEVALUACIÓN ##
 
@@ -620,3 +610,4 @@ Algo que noté en el codigo es que los valores que se leen son decimales cuando 
 | 3. Análisis y Reflexión | 3.5   | La bitácora conecta claramente la evidencia  con la explicación.|
 | 4. Apropiación y Articulación de Conceptos | 3.5  |   Se plasmó en la bitácora el trabajo realizado tanto en clase como de manera asíncrónica para la entrega, no llegué a comprender todo honestamente por las inasistencias a clases  |
 | TOTAL| 3.7|  Se pudo haber hecho mejor   |
+
