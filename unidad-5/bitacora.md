@@ -158,9 +158,7 @@ Desventajas del ASCII:
 
 ### Explica por qué en la unidad anterior teníamos que enviar la información delimitada y además marcada con un salto de línea y ahora no es necesario.
 
-En la unidad anterior, se usaba un protocolo de texto ASCII donde los datos (xValue, yValue, aState, bState) tenían una longitud variable. Para que el sketch pudiera saber cuándo terminaba un paquete y comenzaba el siguiente, se necesitaba un delimitador, que en este caso era el salto de línea (\n). Al recibir el \n, p5.js sabía que tenía un mensaje completo para procesar.
-
-En el nuevo protocolo binario, el tamaño del paquete es fijo y conocido de antemano (6 bytes en el primer ejemplo, 8 bytes con el framing). Por lo tanto, el receptor simplemente tiene que leer un número fijo de bytes para obtener un paquete completo, sin necesidad de un delimitador. Esto hace que la comunicación sea más simple y eficiente, ya que no se envían bytes extra.
+Antes se usaba un protocolo de texto ASCII con delimitadores (salto de línea) para identificar los paquetes de datos. Ahora, con el protocolo binario, los paquetes tienen un tamaño fijo, lo que permite leerlos directamente sin delimitadores, haciendo la comunicación más simple y eficiente.
 
 ### Compara el código de la unidad anterior relacionado con la recepción de los datos seriales que ves ahora. ¿Qué cambios observas?
 El código de p5.js ha cambiado significativamente en la forma en que lee los datos seriales:
@@ -601,7 +599,7 @@ function keyPressed() {
 ```
 Empecé el ejercicio siguiendo exactamente el instructivo de la Unidad 5 y siguiendo paso a paso lo que el profe iba mostrando en esta unidad.
 
-En esta parte de la unidad hice varias pruebas para comprobar que realmente entendí lo del framing y los paquetes binarios. Primero comparé cómo se comportaba la aplicación cuando usaba el envío en texto con comas, frente al nuevo envío en binario con header y checksum. Me di cuenta de que con el método en texto a veces se colaban lecturas incompletas, lo que hacía que el dibujo saltara o aparecieran mensajes de error. En cambio, al implementar los paquetes binarios con 0xAA y el checksum, la transmisión se sincronizó mejor.
+Probé tanto el envío en texto como en binario, con el texto tuve lecturas incompletas y errores, pero al usar paquetes binarios con header y checksum la transmisión quedó mucho más estable y sincronizada.
 
 <img width="543" height="89" alt="image" src="https://github.com/user-attachments/assets/0d3c8a61-4ca3-48f4-9bd8-026b96370b10" />
 
@@ -612,4 +610,5 @@ Para probarlo, corri la aplicación y miré la consola de p5.js. Cuando los paqu
 Algo que notamos en el codigo es que los valores que se leen son decimales cuando se supone que lo estamos convirtiendo a enteros. Lo que sucede es que en la parte en la que estamos recibiendo los datos de x y y se realiza una división por 2. Esto convierte los numeros a float.
 
 <img width="429" height="54" alt="image" src="https://github.com/user-attachments/assets/4900107b-7a7b-4aee-a835-91468a3d3aff" />
+
 
