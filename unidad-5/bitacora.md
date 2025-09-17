@@ -208,12 +208,9 @@ Al ejecutar el código final, verás en la consola de p5.js que los datos se imp
 
 
 
-# Actividad 04
-
-
-Codigo a modificar
-
-```
+## ACTIVIDAD 4 ##
+**Codigo a modificar**
+```js
 var x = 0;
 var y = 0;
 var stepSize = 5.0;
@@ -396,9 +393,10 @@ function keyPressed() {
 }
 
 ```
-Codigo modificado
 
-```
+**Codigo modificado**
+
+```js
 var x = 0;
 var y = 0;
 var stepSize = 5.0;
@@ -595,37 +593,21 @@ function keyPressed() {
   if (keyCode == UP_ARROW) angleDistortion += 0.1;
   if (keyCode == DOWN_ARROW) angleDistortion -= 0.1;
 }
-
 ```
-<img width="812" height="738" alt="image" src="https://github.com/user-attachments/assets/6c35abb3-7c6c-4e0f-8187-8809fd5b97a5" />
-<img width="772" height="657" alt="image" src="https://github.com/user-attachments/assets/84ae145d-6da1-4fa9-bd8b-e137bfeabbe0" />
-<img width="802" height="663" alt="image" src="https://github.com/user-attachments/assets/a691d376-cc5a-4015-8acd-a5f34fb8d154" />
 
-## PROBLEMAS
+Empecé el ejercicio siguiendo exactamente el instructivo de la Unidad 5 y siguiendo paso a paso lo que el profe iba mostrando en esta unidad.
 
-- no se veía el rectangulo y el color no se cambiaba como correspondía dependiende de la inclinación.
-<img width="785" height="656" alt="image" src="https://github.com/user-attachments/assets/b060c1c3-93ee-4306-9a24-610fe317fee6" />
 
-```js
-// dentro del readLoop:
-let dv = new DataView(payload.buffer);
-xValue = dv.getInt16(0, true);   
-yValue = dv.getInt16(2, true);   
+En esta parte de la unidad hice varias pruebas para comprobar que realmente entendí lo del framing y los paquetes binarios. Primero comparé cómo se comportaba la aplicación cuando usaba el envío en texto con comas, frente al nuevo envío en binario con header y checksum. Me di cuenta de que con el método en texto a veces se colaban lecturas incompletas, lo que hacía que el dibujo saltara o aparecieran mensajes de error. En cambio, al implementar los paquetes binarios con 0xAA y el checksum, la transmisión se sincronizó mejor.
+<img width="543" height="89" alt="image" src="https://github.com/user-attachments/assets/501f2ce5-0fe8-4576-93df-c0975f2d8674" />
 
-```
-¿Qué pasa aquí?
 
-En el micro:bit usaste struct.pack('>2h2B', ...) → > significa big endian.
+Para probarlo,  corri la aplicación y miré la consola de p5.js. Cuando los paquetes llegaban bien, veía valores  de microBitX, microBitY y los estados de A y B. Pero cuando movía el micro:bit muy rápido o lo desconectaba y reconectaba, a veces aparecía el mensaje “Checksum error in packet”. Eso me sirvió como evidencia de que el programa realmente estaba descartando basura y no se usaban datos dañados en el dibujo.
+<img width="458" height="105" alt="image" src="https://github.com/user-attachments/assets/4d5a5dfb-820d-4fcf-91bd-542fd7c4c293" />
 
-En JS, el segundo argumento de getInt16(offset, littleEndian) indica el orden de los bytes.
 
-Si lo pones en true (little endian), vas a leer mal los datos:
+Algo que notamos en el codigo es que los valores que se leen son decimales cuando se supone que lo estamos convirtiendo a enteros. Lo que sucede es que en la parte en la que estamos recibiendo los datos de x y y se realiza una división por 2. Esto convierte los numeros a float.<img width="429" height="54" alt="image" src="https://github.com/user-attachments/assets/71148875-a3f9-4eed-a5a4-627c4ce88de7" />
 
-Los valores de xValue y yValue serán números enormes o inconsistentes.
-
-El rectángulo en p5.js se moverá erráticamente o se quedará trabado.
-
-Corrección: usar dv.getInt16(0) y dv.getInt16(2) (sin el true).
 
 ## AUTOEVALUACIÓN ##
 
@@ -636,5 +618,6 @@ Corrección: usar dv.getInt16(0) y dv.getInt16(2) (sin el true).
 | 3. Análisis y Reflexión | 3.5   | La bitácora conecta claramente la evidencia  con la explicación.|
 | 4. Apropiación y Articulación de Conceptos | 3.5  |   Se plasmó en la bitácora el trabajo realizado tanto en clase como de manera asíncrónica para la entrega, no llegué a comprender todo honestamente por las inasistencias a clases  |
 | TOTAL| 3.7|  Se pudo haber hecho mejor   |
+
 
 
