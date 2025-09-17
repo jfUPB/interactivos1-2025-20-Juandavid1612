@@ -599,7 +599,33 @@ function keyPressed() {
 ```
 <img width="812" height="738" alt="image" src="https://github.com/user-attachments/assets/6c35abb3-7c6c-4e0f-8187-8809fd5b97a5" />
 <img width="772" height="657" alt="image" src="https://github.com/user-attachments/assets/84ae145d-6da1-4fa9-bd8b-e137bfeabbe0" />
+<img width="802" height="663" alt="image" src="https://github.com/user-attachments/assets/a691d376-cc5a-4015-8acd-a5f34fb8d154" />
 
+## PROBLEMAS
+
+- no se veía el rectangulo y el color no se cambiaba como correspondía dependiende de la inclinación.
+<img width="785" height="656" alt="image" src="https://github.com/user-attachments/assets/b060c1c3-93ee-4306-9a24-610fe317fee6" />
+
+```js
+// dentro del readLoop:
+let dv = new DataView(payload.buffer);
+xValue = dv.getInt16(0, true);   
+yValue = dv.getInt16(2, true);   
+
+```
+¿Qué pasa aquí?
+
+En el micro:bit usaste struct.pack('>2h2B', ...) → > significa big endian.
+
+En JS, el segundo argumento de getInt16(offset, littleEndian) indica el orden de los bytes.
+
+Si lo pones en true (little endian), vas a leer mal los datos:
+
+Los valores de xValue y yValue serán números enormes o inconsistentes.
+
+El rectángulo en p5.js se moverá erráticamente o se quedará trabado.
+
+Corrección: usar dv.getInt16(0) y dv.getInt16(2) (sin el true).
 
 ## AUTOEVALUACIÓN ##
 
@@ -610,4 +636,5 @@ function keyPressed() {
 | 3. Análisis y Reflexión | 3.5   | La bitácora conecta claramente la evidencia  con la explicación.|
 | 4. Apropiación y Articulación de Conceptos | 3.5  |   Se plasmó en la bitácora el trabajo realizado tanto en clase como de manera asíncrónica para la entrega, no llegué a comprender todo honestamente por las inasistencias a clases  |
 | TOTAL| 3.7|  Se pudo haber hecho mejor   |
+
 
