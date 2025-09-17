@@ -152,3 +152,58 @@ Desventajas del ASCII:
 - Ocupa más espacio (cada número puede tener varios caracteres).
 
 - Es más lento al enviar y procesar.
+
+
+# Actividad 03
+
+## Explica por qué en la unidad anterior teníamos que enviar la información delimitada y además marcada con un salto de línea y ahora no es necesario.
+
+En la unidad anterior, se usaba un protocolo de texto ASCII donde los datos (xValue, yValue, aState, bState) tenían una longitud variable. Para que el sketch pudiera saber cuándo terminaba un paquete y comenzaba el siguiente, se necesitaba un delimitador, que en este caso era el salto de línea (\n). Al recibir el \n, p5.js sabía que tenía un mensaje completo para procesar.
+
+En el nuevo protocolo binario, el tamaño del paquete es fijo y conocido de antemano (6 bytes en el primer ejemplo, 8 bytes con el framing). Por lo tanto, el receptor simplemente tiene que leer un número fijo de bytes para obtener un paquete completo, sin necesidad de un delimitador. Esto hace que la comunicación sea más simple y eficiente, ya que no se envían bytes extra.
+
+## Compara el código de la unidad anterior relacionado con la recepción de los datos seriales que ves ahora. ¿Qué cambios observas?
+El código de p5.js ha cambiado significativamente en la forma en que lee los datos seriales:
+
+if (port.availableBytes() >= 6): En lugar de esperar un delimitador (\n), el código verifica si hay al menos 6 bytes disponibles en el puerto serial.
+
+let data = port.readBytes(6): Ahora se leen exactamente 6 bytes a la vez, garantizando que se recibe un paquete completo.
+
+Se usa DataView para interpretar los bytes:
+
+view.getInt16(0): Lee 2 bytes a partir del byte 0 como un entero con signo de 16 bits (xValue).
+
+view.getInt16(2): Lee 2 bytes a partir del byte 2 como un entero con signo de 16 bits (yValue).
+
+view.getUint8(4): Lee 1 byte a partir del byte 4 como un entero sin signo de 8 bits (aState). Se compara si es 1 para obtener el estado booleano.
+
+view.getUint8(5): Lee 1 byte a partir del byte 5 como un entero sin signo de 8 bits (bState). Se compara si es 1 para obtener el estado booleano.
+
+## ¿Qué ves en la consola? ¿Por qué crees que se produce este error?
+El problema es de la sincronización Cuando se ejecuta el código y se observa la consola, se notara que los datos a veces se desalinean. Por ejemplo, en el resultado que muestras, aparecen valores extraños como 92 o 222 al inicio de las líneas, o valores incorrectos como microBitY: 513 o microBitX: 3073.
+
+Este error se produce porque no hay un mecanismo de sincronización. El receptor asume que el primer byte que recibe es el inicio de un nuevo paquete. Sin embargo, si la comunicación se interrumpe o el programa de p5.js se inicia a mitad de una transmisión, el port.readBytes(6) podría leer los 6 bytes a partir del segundo, tercero, o cuarto byte del paquete real, lo que causaría que los datos se interpreten de forma incorrecta.
+
+## ¿Qué cambios tienen los programas y ¿Qué puedes observar en la consola del editor de p5.js?
+
+El framing como solución Con la implementación del framing, el código de micro:bit y p5.js cambia para asegurar una comunicación robusta:
+
+Micro:bit:
+
+Ahora envía un paquete de 8 bytes (b'\xAA' + data + bytes([checksum])).
+
+El primer byte es un header (0xAA) que marca el inicio de cada paquete.
+
+El último byte es un checksum, que sirve para verificar la integridad de los datos.
+
+p5.js:
+
+El código no lee los bytes de 6 en 6, sino que los va almacenando en un buffer (serialBuffer).
+
+Utiliza un bucle while para buscar el byte de inicio (0xAA). Si el primer byte del buffer no es 0xAA, lo descarta y avanza.
+
+Una vez que encuentra el header, verifica que haya un paquete completo (8 bytes) disponible.
+
+Calcula el checksum de los datos recibidos y lo compara con el checksum enviado. Si no coinciden, descarta el paquete para evitar procesar datos corruptos.
+
+Al ejecutar el código final, verás en la consola de p5.js que los datos se imprimen de forma consistente y correcta: microBitX: 500 microBitY: 524 microBitAState: true microBitBState: false. Esto confirma que el framing y el checksum solucionaron los problemas de sincronización e integridad de los datos.
