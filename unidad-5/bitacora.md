@@ -607,8 +607,9 @@ Para probarlo, corri la aplicación y miré la consola de p5.js. Cuando los paqu
 
 <img width="458" height="105" alt="image" src="https://github.com/user-attachments/assets/42de082b-ac41-4518-8032-005bb3cc4586" />
 
-Algo que notamos en el codigo es que los valores que se leen son decimales cuando se supone que lo estamos convirtiendo a enteros. Lo que sucede es que en la parte en la que estamos recibiendo los datos de x y y se realiza una división por 2. Esto convierte los numeros a float.
+Algo que noté en el codigo es que los valores que se leen son decimales cuando se supone que lo estamos convirtiendo a enteros. Lo que sucede es que en la parte en la que estamos recibiendo los datos de x y y se realiza una división por 2. Esto convierte los numeros a float.
 
 <img width="429" height="54" alt="image" src="https://github.com/user-attachments/assets/4900107b-7a7b-4aee-a835-91468a3d3aff" />
+
 
 
