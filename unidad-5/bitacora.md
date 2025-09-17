@@ -209,6 +209,8 @@ Al ejecutar el código final, verás en la consola de p5.js que los datos se imp
 
 
 ## ACTIVIDAD 4 ##
+### SE CAMBIÓ LA OBRA DE ARTE GENERATIVO HECHO DE LA ANTERIOR UNIDAD
+
 **Codigo a modificar**
 ```js
 var x = 0;
@@ -598,15 +600,17 @@ function keyPressed() {
 Empecé el ejercicio siguiendo exactamente el instructivo de la Unidad 5 y siguiendo paso a paso lo que el profe iba mostrando en esta unidad.
 
 
-En esta parte de la unidad hice varias pruebas para comprobar que realmente entendí lo del framing y los paquetes binarios. Primero comparé cómo se comportaba la aplicación cuando usaba el envío en texto con comas, frente al nuevo envío en binario con header y checksum. Me di cuenta de que con el método en texto a veces se colaban lecturas incompletas, lo que hacía que el dibujo saltara o aparecieran mensajes de error. En cambio, al implementar los paquetes binarios con 0xAA y el checksum, la transmisión se sincronizó mejor.
+Probé el envío en texto con comas y en binario con header y checksum. Con el texto había lecturas incompletas que causaban errores o saltos, mientras que con los paquetes binarios la transmisión fue más estable y sincronizada.
+
 <img width="543" height="89" alt="image" src="https://github.com/user-attachments/assets/501f2ce5-0fe8-4576-93df-c0975f2d8674" />
 
 
-Para probarlo,  corri la aplicación y miré la consola de p5.js. Cuando los paquetes llegaban bien, veía valores  de microBitX, microBitY y los estados de A y B. Pero cuando movía el micro:bit muy rápido o lo desconectaba y reconectaba, a veces aparecía el mensaje “Checksum error in packet”. Eso me sirvió como evidencia de que el programa realmente estaba descartando basura y no se usaban datos dañados en el dibujo.
+Al ejecutar la aplicación revisé la consola de p5.js: cuando todo funcionaba veía los valores de microBitX, microBitY y los botones A y B, pero al mover rápido el micro:bit o reconectarlo aparecía “Checksum error in packet”. Eso confirmó que el programa descartaba datos corruptos y solo usaba información válida.
+
 <img width="458" height="105" alt="image" src="https://github.com/user-attachments/assets/4d5a5dfb-820d-4fcf-91bd-542fd7c4c293" />
 
 
-Algo que notamos en el codigo es que los valores que se leen son decimales cuando se supone que lo estamos convirtiendo a enteros. Lo que sucede es que en la parte en la que estamos recibiendo los datos de x y y se realiza una división por 2. Esto convierte los numeros a float.<img width="429" height="54" alt="image" src="https://github.com/user-attachments/assets/71148875-a3f9-4eed-a5a4-627c4ce88de7" />
+Noté que los valores leídos aparecen como decimales en lugar de enteros. Esto ocurre porque al recibir los datos de x e y el código hace una división por 2, lo que convierte automáticamente los números en tipo float..<img width="429" height="54" alt="image" src="https://github.com/user-attachments/assets/71148875-a3f9-4eed-a5a4-627c4ce88de7" />
 
 
 ## AUTOEVALUACIÓN ##
@@ -618,6 +622,7 @@ Algo que notamos en el codigo es que los valores que se leen son decimales cuand
 | 3. Análisis y Reflexión | 3.5   | La bitácora conecta claramente la evidencia  con la explicación.|
 | 4. Apropiación y Articulación de Conceptos | 3.5  |   Se plasmó en la bitácora el trabajo realizado tanto en clase como de manera asíncrónica para la entrega, no llegué a comprender todo honestamente por las inasistencias a clases  |
 | TOTAL| 3.7|  Se pudo haber hecho mejor   |
+
 
 
 
