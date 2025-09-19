@@ -92,6 +92,9 @@ B released: Detecta cuando bState pasa de true a false.
 
 Capturas de pantalla de los algunos dibujos que hayas hecho con el sketch.
 
+<a name="c1"></a>
+Captura 1
+
 <img width="735" height="724" alt="image" src="https://github.com/user-attachments/assets/aa35471c-8a73-4e2c-a523-a5ba45b5b4f9" />
 
 <img width="984" height="913" alt="image" src="https://github.com/user-attachments/assets/81eac808-8f28-413c-807e-75da279f97d7" />
@@ -612,11 +615,12 @@ Probé el envío en texto con comas y en binario con header y checksum. Con el t
 
 | CRITERIOS | NOTA | JUSTIFICACIÓN|
 |----------|----------|----------|
-| 1. Profundidad de la Indagación  | 4   |Fui indagando según me surgieran dudas, apoyandome de mis compañeros que sí han asistido estas ultimas clases|
+| 1. Profundidad de la Indagación  | 4   |Fui indagando según me surgieran dudas, apoyandome de mis compañeros que sí han asistido estas ultimas clases. Por ejemplo esta [captura](#c1)|
 | 2. Calidad de la Experimentación | 4   | Comprobé que el código estuviera funcionando   |
 | 3. Análisis y Reflexión | 3.5   | La bitácora conecta claramente la evidencia  con la explicación.|
 | 4. Apropiación y Articulación de Conceptos | 3.5  |   Se plasmó en la bitácora el trabajo realizado tanto en clase como de manera asíncrónica para la entrega, no llegué a comprender todo honestamente por las inasistencias a clases  |
 | TOTAL| 3.7|  Se pudo haber hecho mejor   |
+
 
 
 
