@@ -133,7 +133,7 @@ var myp5 = new p5(sketch);
 
 ```
 
-[Enlace a la aplicación modificada]([https://editor.p5js.org/cookielolwow/sketches/PAx7VYK9Y](https://editor.p5js.org/Juandavid1612/full/chDIdqana))
+[Enlace a la aplicación modificada](https://editor.p5js.org/Juandavid1612/full/chDIdqana)
 
 Código modificado:
 
@@ -320,6 +320,7 @@ function keyPressed() {
 }
 
 ```
+
 
 
 
