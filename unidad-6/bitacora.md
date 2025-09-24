@@ -43,7 +43,12 @@ Los mensajes del gitbash al parecer toma la posicion del circulo y las actualiza
 
 ### Act 2
 
+* ¿Qué es Internet?
+
+  Sí claro que uso wifi, en mi casa uso siempre cable de red, el navegador sirve como una avenida, las paginas a las que accedo son calles secundarias y los apartados de estas paginas servirían como intersecciones, el que la "rampa" se corte significaría que el vehículo en sí mismo deje de funcionar, no habría ninguna forma de ir a ningun lado, es como si la carretera en este caso desapareciera por completo.
+
 ### Act 3
 
 ### Act 4
+
 
