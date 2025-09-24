@@ -321,9 +321,8 @@ function keyPressed() {
 
 ```
 
-## Video
 
-[Video demostratativo](https://youtu.be/EuDLmnAlSAE)
+
 
 
 
