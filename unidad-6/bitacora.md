@@ -34,6 +34,7 @@ Server is listening on  http://localhost:3000"
 <img width="900" height="783" alt="image" src="https://github.com/user-attachments/assets/82cfc9cb-fe6c-4a3f-97f6-af7f62b34dd9" />
 
 Los mensajes del navegador dicen: Sync status: Synced 
+
 Los mensajes del gitbash al parecer toma la posicion del circulo y las actualiza segun se vaya moviendo
 
 <img width="550" height="147" alt="image" src="https://github.com/user-attachments/assets/25aa9757-7896-4257-9a7f-a12919742f12" />
@@ -45,3 +46,4 @@ Los mensajes del gitbash al parecer toma la posicion del circulo y las actualiza
 ### Act 3
 
 ### Act 4
+
