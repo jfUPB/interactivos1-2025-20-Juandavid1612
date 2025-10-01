@@ -60,19 +60,21 @@ el serial maneja datos muy sencillos como numeros y estados de botones mientras 
 es la estructura basica de la pagina ( head, body, etc ) campos de texto y demás.
 
 * CSS
+  
 es el estilizado de la pagina, color, animaciones, logos, difumindaos, etc
 
 * JS
+
 Js es la interacción que tiene el usuario con la pagina, que por ejemplo los datos ingresados por el usuario
 en los campos se guarden y demás
 
 ### ¿Cómo se ejecuta JavaScript?
 
-- **¿Qué ventajas crees que tiene el modelo basado en eventos para una interfaz de usuario web?**
+ **¿Qué ventajas crees que tiene el modelo basado en eventos para una interfaz de usuario web?**
 
   - Pues la ventaja principal que se me ocurre es que solamente está funcionando cuando debería funcionar, y no está constantemente actualizando incluso si no hay cambios, encima solo reacciona cuando hay algo relevante. 
 
-- **¿Sería eficiente tener un bucle draw() redibujando toda la página 60 veces por segundo si nada ha cambiado?**
+**¿Sería eficiente tener un bucle draw() redibujando toda la página 60 veces por segundo si nada ha cambiado?**
 
   - No lo sería para nada, sería mucho trabajo para esencialmente mostrar la misma información que el frame pasado. 
 
@@ -226,6 +228,7 @@ function draw() {
     line(point2[0] + shakeX, point2[1] + shakeY, resultingVector.x + remotePageData.width / 2, resultingVector.y + remotePageData.height / 2);
 }
 ```
+
 
 
 
