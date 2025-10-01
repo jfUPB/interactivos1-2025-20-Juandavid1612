@@ -249,11 +249,13 @@ function draw() {
 **CRITERIOS	NOTA	JUSTIFICACIÓN**   
 | CRITERIOS | NOTA | JUSTIFICACIÓN|
 |----------|----------|----------|
-| 1. Profundidad de la Indagación  |  5   | Mientras hacía el trabajo, iba preguntando a mi compañero o investigaba por mi propia cuenta a traves de la terminal [ejemplo](#im1) |
-| 2. Calidad de la Experimentación |  5   | Mientras realizaba las actividades, siempre las ponía a prueba en el gitbash como se puede evidenciar [acá](#im4)|
-| 3. Análisis y Reflexión | 5  | Me tomé el tiempo para detenidamente responder a todas las preguntas que se me planteaban en la unidad sobre todo en la actividad #2 |
-| 4. Apropiación y Articulación de Conceptos |  4.5  | La bitácora muestra comprensión de los temas, aún así siento que puedo entender mejor el uso de p5js con esta tecnología de comuniación  |
-| TOTAL| 4.87 |    |   
+| Act 1  |  5   | Configuré correctamente mi entoorno de trabajo, cloné el repositorio y ejecuté el codigo en gitbash y documenté todo lo pedido según la salida en la consola como podemos ver en: [ejemplo](#im1) |
+| Act 2 |  5   | Respondí todas las preguntas tomándome el tiempo de pensarlas y ponerlo todo en mis propias palabras y a mi forma de entenderlo |
+| Act 3| 5  |Seguí paso a paso las instrucciones de los experimentos y analicé lo que ocurría según me iban pidiendo hacer|
+| Act 4 |  4.5  |Analicé cómo la page 2 interactua con el servidor teniendo en cuento lo de page1, realicé todos los experimentos propuestos y los documenté como se puede apreciar [acá](#im5) y [aquí](#im7) |
+| Act 5 |  0  | No me dio tiempo a realizarla  |
+| TOTAL| 3.9 ( aunque la nota sería 3 según la rúbrica de esta unidad ) |    |   
+
 
 
 
