@@ -6,7 +6,8 @@
 ### Act 1
 
 * ¿Qué ocurrió en la terminal cuando ejecutaste npm install? ¿Cuál crees que es su propósito?
-* 
+
+<a name="im1"></a> 
   <img width="807" height="171" alt="image" src="https://github.com/user-attachments/assets/fbfc3bd5-bbfb-48ab-9cf0-2f3b3c89db20" />
 
 supongo que sirve para installar librerías o componentes de alguna librería
@@ -23,13 +24,17 @@ Server is listening on  http://localhost:3000"
   Cuando abrí solo page1 solo aparecía " esperando conexión de la otra ventana" al abrir la segunda tambien aparecieron dos circulos rojos con un punto en medio
 
 * ¿Qué mensajes aparecieron en la terminal del servidor cuando abriste page1 y page2?
+
+  <a name="im2"></a>
 <img width="952" height="258" alt="image" src="https://github.com/user-attachments/assets/d70ba7fe-b529-4995-a0ef-1b38cfe2a2f9" />
 
 * Describe qué sucede en ambas páginas del navegador cuando mueves una de las ventanas. ¿Cambia algo visualmente? ¿Qué mensajes aparecen (si los hay) en la consola del navegador (usualmente accesible con F12 -> Pestaña Consola) y en la terminal del servidor?
 
   Son dos circulos conectados con una linea en el medio, si muevo la ventana la cuerda sigue el centro de la que muevo siempre, de manera que están conectadas,  tambien si separo mucho las ventanas estas hacen coincidir la posición del otro circulo para que se vea siempre en lugar:
 
+<a name="im3"></a>
 <img width="1620" height="990" alt="image" src="https://github.com/user-attachments/assets/6a29464b-6e8a-4917-957a-4014f5879371" />
+
 
 <img width="900" height="783" alt="image" src="https://github.com/user-attachments/assets/82cfc9cb-fe6c-4a3f-97f6-af7f62b34dd9" />
 
@@ -37,6 +42,7 @@ Los mensajes del navegador dicen: Sync status: Synced
 
 Los mensajes del gitbash al parecer toma la posicion del circulo y las actualiza segun se vaya moviendo
 
+<a name="im4"></a>
 <img width="550" height="147" alt="image" src="https://github.com/user-attachments/assets/25aa9757-7896-4257-9a7f-a12919742f12" />
 
 <img width="925" height="966" alt="image" src="https://github.com/user-attachments/assets/72e1c381-b10d-4937-9fa6-9428f936ac9d" />
@@ -143,13 +149,18 @@ en los campos se guarden y demás
 
 **Abre page2.html en tu navegador (con el servidor corriendo). Abre la consola de desarrollador (F12). Detén el servidor Node.js (Ctrl+C). Refresca la página page2.html. Observa la consola del navegador. ¿Ves algún error relacionado con la conexión? ¿Qué indica? Vuelve a iniciar el servidor y refresca la página. ¿Desaparecen los errores?**
 > Error que sale al desconectar:
-<a name="Capturas04"></a>
+
+<a name="im5"></a>
 <img width="700" height="58" alt="image" src="https://github.com/user-attachments/assets/60e39694-06eb-44ea-a208-b7cf803767cd" />
 
-> Mensaje al reconectar: 
+> Mensaje al reconectar:
+
+<a name="im6"></a>
 <img width="751" height="136" alt="image" src="https://github.com/user-attachments/assets/ad323b42-2884-450a-8f13-d43303c7ff4b" />
   
-> Hay un error en el GET del script llamado `manager.js`. Efectivamente, este desaparece al volver a iniciar el servidor y refrescar. Lo que indica es que el cliente intenta conectarse al servidor pero no lo encuentra, mostrando que la comunicación depende completamente del servidor activo. Este es el script:  
+> Hay un error en el GET del script llamado `manager.js`. Efectivamente, este desaparece al volver a iniciar el servidor y refrescar. Lo que indica es que el cliente intenta conectarse al servidor pero no lo encuentra, mostrando que la comunicación depende completamente del servidor activo. Este es el script:
+
+<a name="im7"></a>
 <img width="829" height="583" alt="image" src="https://github.com/user-attachments/assets/681f460e-13f5-4ce7-8565-85bfa4de570e" />
   
 **Comenta la línea socket.emit(‘win2update’, currentPageData, socket.id); dentro del listener connect. Reinicia el servidor y refresca page1.html y page2.html. Mueve la ventana de page2 un poco para que envíe una actualización. ¿Qué pasó? ¿Por qué?**
@@ -172,10 +183,12 @@ Sync status: pages=false, synced=true, clients=2
 > Cada vez que una ventana se mueve, la otra recibe sus nuevos datos de posición en tiempo real.
 
 **Observa checkWindowPosition() en page2.js y modifica el código del if para comprobar si el código dentreo de este se ejecuta. Mueve cada ventana y observa las consolas. ¿Qué puedes concluir y por qué?**
-Agregué la línea `console.log('if funciona correctamente :)');` dentro del if. Cada frame que la ventana se moviera, se volvía a mandar el mensaje... lo que significa que el if se estaba ejecutando constantemente porque identificaba correctamente que las coordenadas anteriores eran distintas a las actuales. Mientras no se mueva, el mensaje no se manda. Por ende, ese código se corre solamente cuando es necesario... como el draw() en p5.js que se llama literal cada frame que corre el programa. Es más eficiente.    
+Agregué la línea `console.log('if funciona correctamente :)');` dentro del if. Cada frame que la ventana se moviera, se volvía a mandar el mensaje... lo que significa que el if se estaba ejecutando constantemente porque identificaba correctamente que las coordenadas anteriores eran distintas a las actuales. Mientras no se mueva, el mensaje no se manda. Por ende, ese código se corre solamente cuando es necesario... como el draw() en p5.js que se llama literal cada frame que corre el programa. Es más eficiente. 
+
+<a name="im8"></a>
 <img width="824" height="471" alt="image" src="https://github.com/user-attachments/assets/9283cd30-e6e2-4667-b55d-0e748556ded9" />
 
-<a name="BG04"></a>
+<a name="im9"></a>
 **Cambia el background(220) para que dependa de la distancia entre las ventanas. Puedes calcular la magnitud del resultingVector usando let distancia = resultingVector.mag(); y luego usa map() para convertir esa distancia a un valor de gris o color. background(map(distancia, 0, 1000, 255, 0)); (ajusta el rango 0-1000 según sea necesario). Inventa otra modificación creativa.**
 > La modificación creativa que hice fue agregarle un shake a la bolita para simular la tensión al alejarse y estirar la cuerda. Me quedó así :D
 ```program.js
@@ -230,6 +243,17 @@ function draw() {
 ```
 
 
+
+## Autoevaluación 
+
+**CRITERIOS	NOTA	JUSTIFICACIÓN**   
+| CRITERIOS | NOTA | JUSTIFICACIÓN|
+|----------|----------|----------|
+| 1. Profundidad de la Indagación  |  5   | Mientras hacía el trabajo, iba preguntando a mi compañero o investigaba por mi propia cuenta para así comprender mejor los temas. Ejemplo de ancla [aquí](#im1) |
+| 2. Calidad de la Experimentación |  5   | Mientras realizaba las actividades, siempre las ponía a prueba con el micro:bit y dejaba evidencia en la bitácora con fotos. |
+| 3. Análisis y Reflexión |  4.6   | En la bitácora hay fotos de los procedimientos y algunos textos breves indicando si algo no se podía leer en una opción u otra.  |
+| 4. Apropiación y Articulación de Conceptos |  4.5  | La bitácora muestra comprensión de los temas, pero siento que aún me falta mejorar un poco.    |
+| TOTAL| 4.78 |    |   
 
 
 
