@@ -249,11 +249,12 @@ function draw() {
 **CRITERIOS	NOTA	JUSTIFICACIÓN**   
 | CRITERIOS | NOTA | JUSTIFICACIÓN|
 |----------|----------|----------|
-| 1. Profundidad de la Indagación  |  5   | Mientras hacía el trabajo, iba preguntando a mi compañero o investigaba por mi propia cuenta para así comprender mejor los temas. Ejemplo de ancla [aquí](#im1) |
-| 2. Calidad de la Experimentación |  5   | Mientras realizaba las actividades, siempre las ponía a prueba con el micro:bit y dejaba evidencia en la bitácora con fotos. |
-| 3. Análisis y Reflexión |  4.6   | En la bitácora hay fotos de los procedimientos y algunos textos breves indicando si algo no se podía leer en una opción u otra.  |
-| 4. Apropiación y Articulación de Conceptos |  4.5  | La bitácora muestra comprensión de los temas, pero siento que aún me falta mejorar un poco.    |
-| TOTAL| 4.78 |    |   
+| 1. Profundidad de la Indagación  |  5   | Mientras hacía el trabajo, iba preguntando a mi compañero o investigaba por mi propia cuenta a traves de la terminal [ejemplo](#im1) |
+| 2. Calidad de la Experimentación |  5   | Mientras realizaba las actividades, siempre las ponía a prueba en el gitbash como se puede evidenciar [acá](#im2)|
+| 3. Análisis y Reflexión | 5  | Me tomé el tiempo para detenidamente responder a todas las preguntas que se me planteaban en la unidad sobre todo en la actividad #2 |
+| 4. Apropiación y Articulación de Conceptos |  4.5  | La bitácora muestra comprensión de los temas, aún así siento que puedo entender mejor el uso de p5js con esta tecnología de comuniación  |
+| TOTAL| 4.87 |    |   
+
 
 
 
